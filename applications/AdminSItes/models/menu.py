@@ -5,5 +5,5 @@ response.meta.keywords = settings.keywords
 response.meta.description = settings.description
 response.menu = [
 (T('Index'),URL('default','index')==URL(),URL('default','index'),[]),
-(T('Tbl Components'),URL('default','tbl_components_manage')==URL(),URL('default','tbl_components_manage'),[]),
+(T('Componentes'),URL('default','tbl_components_manage')==URL(),URL('default','tbl_components_manage'),[]),
 ]

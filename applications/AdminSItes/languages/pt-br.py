@@ -50,6 +50,7 @@
 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export': 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export',
 'Comma-separated export of visible columns. Fields from other tables are exported as they appear on-screen but this may be slow for many rows': 'Comma-separated export of visible columns. Fields from other tables are exported as they appear on-screen but this may be slow for many rows',
 'Community': 'Comunidade',
+'Componentes': 'Componentes',
 'Components and Plugins': 'Componentes e Plugins',
 'Confirm Password': 'Confirm Password',
 'contains': 'contains',
