@@ -1,5 +1,5 @@
 ### SITE PLONE
-@auth.requires_permission('default', '')
+@auth.requires_membership('admin')
 def add():
 	import os, sys
 	if request.post_vars.site:
