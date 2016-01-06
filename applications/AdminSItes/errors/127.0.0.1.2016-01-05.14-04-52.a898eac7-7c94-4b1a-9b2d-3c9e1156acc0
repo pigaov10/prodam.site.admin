@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.OSError'> [Errno 17] File exists: '/home/riarussi/src/sites/a'"
+p3
+sS'layer'
+p4
+S'/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py'
+p5
+sS'code'
+p6
+S'### SITE PLONE\n\ndef add():\n\timport os, sys\n\tif request.post_vars.site:\n\t\tsite = request.post_vars.site\n\t\tpath = str("/home/riarussi/src/sites/")+str(site)\n\t\tos.mkdir( path, 0755 );\n\telse:\n\t\tsite = None\n\tlista = os.listdir("/home/riarussi/src/sites/")\n\treturn dict(lista=lista,site=site)\nresponse._vars=response._caller(add)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/riarussi/src/plone_creator/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py", line 13, in <module>\n  File "/home/riarussi/src/plone_creator/web2py/gluon/globals.py", line 412, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py", line 8, in add\n    os.mkdir( path, 0755 );\nOSError: [Errno 17] File exists: \'/home/riarussi/src/sites/a\'\n'
+p11
+s.

@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> global name 'os' is not defined"
+p3
+sS'layer'
+p4
+S'/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py'
+p5
+sS'code'
+p6
+S'### SITE PLONE\n\ndef add():\n\tlista = os.listdir("/home/riarussi/src/")\n\treturn dict(lista=lista)\nresponse._vars=response._caller(add)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/riarussi/src/plone_creator/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py", line 6, in <module>\n  File "/home/riarussi/src/plone_creator/web2py/gluon/globals.py", line 412, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/riarussi/src/plone_creator/web2py/applications/AdminSItes/controllers/sites.py", line 4, in add\n    lista = os.listdir("/home/riarussi/src/")\nNameError: global name \'os\' is not defined\n'
+p11
+s.

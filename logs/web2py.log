@@ -1,0 +1,6 @@
+2016-01-05 16:46:28,240 - web2py - WARNING - GUI not available because Tk library is not installed
+2016-01-05 17:38:26,253 - web2py - WARNING - GUI not available because Tk library is not installed
+2016-01-05 17:38:30,257 - Rocket.Errors.Port8000 - ERROR - Socket 127.0.0.1:8000 in use by other process and it won't share.
+2016-01-05 17:38:30,264 - Rocket.Errors.Port8000 - WARNING - Listener started when not ready.
+2016-01-05 17:38:45,489 - web2py - WARNING - GUI not available because Tk library is not installed
+2016-01-05 17:45:51,019 - web2py - WARNING - GUI not available because Tk library is not installed
