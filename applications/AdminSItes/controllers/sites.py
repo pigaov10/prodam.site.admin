@@ -97,14 +97,6 @@ def add_profile_file(path):
 	"""
 	#seta nó para configuração dos namespaces
 	xml_object = tree_element_first.Element('object')
-	
-	#seta nó para configuração das Viewlets do Plone
-	# browser = tree_element_first.SubElement(configure,"browser:viewlet")
-	# browser.set("name","plone.logo")
-	# browser.set("manager","plone.app.layout.viewlets.interfaces.IPortalHeader")
-	# browser.set("class",".logo.LogoViewlet")
-	# browser.set("permission","zope2.View")
-	# browser.set("layer","prodam.portal.interfaces.IProdamPortal")
 
 	tree = tree_element_first.ElementTree(xml_object)
 	configure_name = "/profiles/default/viewlets.xml"
