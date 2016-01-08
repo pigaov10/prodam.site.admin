@@ -1,5 +1,7 @@
 ### SITE PLONE
 import os, sys
+import xml.etree.cElementTree as tree_element_first
+
 @auth.requires_membership('admin')
 def add():
 	"""
@@ -22,19 +24,27 @@ def add():
 			for directory in directories:
 				path += "/"+directory
 				os.mkdir(path, 0755 );
-			# browser
+			
+			# profiles
 			profiles = path
 			os.mkdir(profiles+"/profiles", 0755);
+			os.mkdir(profiles+"/profiles/default/", 0755);
+			add_profile_file(path)
 
+			#browser
 			path += folders[2]
 			os.mkdir(path, 0755);
+			
 			# viewlets
 			path += folders[1]
 			os.mkdir(path, 0755);
+			
 			# zcml file
 			add_configure_file(path)
-			# python file
+			
+			# python file configure
 			add_viewlets_file(path)
+			
 			# templates
 			path += folders[4]
 			os.mkdir(path, 0755);
@@ -52,7 +62,6 @@ def add_configure_file(path):
 	MÉTODO RESPONSÁVEL POR GERAR O ARQUIVO ZCML 
 	"""
 
-	import xml.etree.cElementTree as tree_element_first
 	#seta nó para configuração dos namespaces
 	configure = tree_element_first.Element('configure')
 	configure.set('xmlns','http://namespaces.zope.org/zope')
@@ -71,7 +80,7 @@ def add_configure_file(path):
 	configure_name = "/configure.zcml"
 	indent(configure)
 	tree.write(path+configure_name,encoding="utf-8")
-	return True
+
 
 def add_template_file(path):
 	"""
@@ -81,7 +90,27 @@ def add_template_file(path):
 	file_name = "alerta.pt"
 	file = open(path+"/"+file_name,"a+")
 	file.close()
-	return True
+
+def add_profile_file(path):
+	"""
+	MÉTODO RESPONSÁVEL POR GERAR O PROFILE CONFIGURAÇÃO VIEWLET viewlets.xml
+	"""
+	#seta nó para configuração dos namespaces
+	xml_object = tree_element_first.Element('object')
+	
+	#seta nó para configuração das Viewlets do Plone
+	# browser = tree_element_first.SubElement(configure,"browser:viewlet")
+	# browser.set("name","plone.logo")
+	# browser.set("manager","plone.app.layout.viewlets.interfaces.IPortalHeader")
+	# browser.set("class",".logo.LogoViewlet")
+	# browser.set("permission","zope2.View")
+	# browser.set("layer","prodam.portal.interfaces.IProdamPortal")
+
+	tree = tree_element_first.ElementTree(xml_object)
+	configure_name = "/profiles/default/viewlets.xml"
+	indent(xml_object)
+	tree.write(path+configure_name,encoding="utf-8")
+
 
 def add_viewlets_file(path):
 	"""
@@ -91,7 +120,6 @@ def add_viewlets_file(path):
 	file_name = "viewlets.py"
 	file = open(path+"/"+file_name,"a+")
 	file.close()
-	return True
 
 def indent(elem, level=0):
     i = "\n" + level*"  "
