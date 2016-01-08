@@ -20,6 +20,7 @@ def add():
 			path  += folders[3]
 			os.mkdir(path, 0755 ); # directory src
 
+			#split do nome do site separado por .
 			directories = project_name.split(".")
 			for directory in directories:
 				path += "/"+directory
@@ -40,7 +41,7 @@ def add():
 			os.mkdir(path, 0755);
 			
 			# zcml file
-			add_configure_file(path)
+			add_configure_file(path,project_name)
 			
 			# python file configure
 			add_viewlets_file(path)
@@ -57,7 +58,7 @@ def add():
 	lista = os.listdir("sites/")
 	return dict(lista=lista,site=site)
 
-def add_configure_file(path):
+def add_configure_file(path,project_name,param1='IPortalHeader',param2='IProdamPortal'):
 	"""
 	MÉTODO RESPONSÁVEL POR GERAR O ARQUIVO ZCML 
 	"""
@@ -71,10 +72,10 @@ def add_configure_file(path):
 	#seta nó para configuração das Viewlets do Plone
 	browser = tree_element_first.SubElement(configure,"browser:viewlet")
 	browser.set("name","plone.logo")
-	browser.set("manager","plone.app.layout.viewlets.interfaces.IPortalHeader")
+	browser.set("manager","plone.app.layout.viewlets.interfaces."+param1)
 	browser.set("class",".logo.LogoViewlet")
 	browser.set("permission","zope2.View")
-	browser.set("layer","prodam.portal.interfaces.IProdamPortal")
+	browser.set("layer",project_name+".interfaces."+param2)
 
 	tree = tree_element_first.ElementTree(configure)
 	configure_name = "/configure.zcml"
