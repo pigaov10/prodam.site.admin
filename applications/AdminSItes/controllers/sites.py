@@ -52,25 +52,25 @@ def add_configure_file(path):
 	MÉTODO RESPONSÁVEL POR GERAR O ARQUIVO ZCML 
 	"""
 
-	file_name = "configure.zcml"
-	file = open(path+"/"+file_name,"a+")
-	text = """<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="prodam.portal">
+	import xml.etree.cElementTree as tree_element_first
+	#seta nó para configuração dos namespaces
+	configure = tree_element_first.Element('configure')
+	configure.set('xmlns','http://namespaces.zope.org/zope')
+	configure.set('xmlns:browser','http://namespaces.zope.org/browser')
+	configure.set('i18n_domain','prodam.portal')
 
-  <browser:viewlet
-      name="prodam.prefeitura.alertas"
-      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-      class=".viewlets.DefaultViewlet"
-      layer="prodam.portal.interfaces.IProdamPortal"
-      template="templates/alerta.pt"
-      permission="zope2.View"
-      />
-</configure>
-			"""
-	file.write(text)
-	file.close()
+	#seta nó para configuração das Viewlets do Plone
+	browser = tree_element_first.SubElement(configure,"browser:viewlet")
+	browser.set("name","plone.logo")
+	browser.set("manager","plone.app.layout.viewlets.interfaces.IPortalHeader")
+	browser.set("class",".logo.LogoViewlet")
+	browser.set("permission","zope2.View")
+	browser.set("layer","prodam.portal.interfaces.IProdamPortal")
+
+	tree = tree_element_first.ElementTree(configure)
+	configure_name = "/configure.zcml"
+	indent(configure)
+	tree.write(path+configure_name,encoding="utf-8")
 	return True
 
 def add_template_file(path):
@@ -92,3 +92,18 @@ def add_viewlets_file(path):
 	file = open(path+"/"+file_name,"a+")
 	file.close()
 	return True
+
+def indent(elem, level=0):
+    i = "\n" + level*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for elem in elem:
+            indent(elem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
