@@ -6,7 +6,7 @@ python:
 before_script:
   - pip install unittest2
 
-script: PYTHONPATH=. unit2 -v gluon.tests.test_cache.py
+script: gluon.tests.test_html.py
 
 notifications:
   irc:
