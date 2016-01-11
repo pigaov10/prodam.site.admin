@@ -6,7 +6,7 @@ python:
 before_script:
   - pip install unittest2
 
-script: gluon.tests.test_html.py
+script: /gluon/tests/test_html.py
 
 notifications:
   irc:
