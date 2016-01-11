@@ -24,6 +24,5 @@ Para uso deste pacote, seu site deve ter sido construído com:
 Estado deste pacote
 -------------------
 
-.. image:: https://travis-ci.org/prodamspsites/prodam.portal.svg
-    :target: https://travis-ci.org/prodamspsites/prodam.portal
+https://travis-ci.org/pigaov10/prodam.site.admin.svg?branch=master
 
