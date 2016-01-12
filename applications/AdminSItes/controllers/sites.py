@@ -52,11 +52,12 @@ def add():
 			# pt file 
 			add_template_file(path)
 		except:
-			raise HTTP(500, T('Erro ao criar o diretório'))
+			raise HTTP(500, T('Ocorreu um erro...'))
 	else:
 		site = None
 	lista = os.listdir("sites/")
 	return dict(lista=lista,site=site)
+
 
 def add_configure_file(path,project_name,param1='IPortalHeader',param2='IProdamPortal'):
 	"""
@@ -128,3 +129,7 @@ def indent(elem, level=0):
     else:
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
+
+def testando():
+	users = db(db.t_tbl_components).select()
+	return dict(users=users)

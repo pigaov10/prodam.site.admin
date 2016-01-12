@@ -6,8 +6,3 @@ python:
 before_script:
   - pip install unittest2
 
-script: gluon.tests.test_html.py
-
-notifications:
-  irc:
-    channels: "irc.freenode.org#web2py"
