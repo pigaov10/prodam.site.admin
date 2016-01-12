@@ -88,9 +88,10 @@ def add_template_file(path):
 	"""
 	MÉTODO RESPONSÁVEL POR GERAR O TEMPLATE alerta.pt 
 	"""
-
+	text = open('sites/components/alerta.pt','r').read()
 	file_name = "alerta.pt"
 	file = open(path+"/"+file_name,"a+")
+	file.write(text)
 	file.close()
 
 def add_profile_file(path):
